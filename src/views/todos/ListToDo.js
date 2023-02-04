@@ -2,7 +2,8 @@ import React from "react";
 import './listToDo.scss'
 import AddToDo from "./AddToDo";
 import {toast} from 'react-toastify';
-
+import Color from "../HOC/Color";
+import { withRouter } from "react-router-dom";
 
 class ListToDo extends React.Component{
 
@@ -131,5 +132,5 @@ class ListToDo extends React.Component{
         )
     }
 }
-
-export default ListToDo
+export default withRouter(ListToDo)
+// export default Color(ListToDo)

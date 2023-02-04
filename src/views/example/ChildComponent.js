@@ -71,4 +71,4 @@ class ChildComponent extends React.Component{
 //         </>
 //     )
 // }
-export default ChildComponent;
+export default ChildComponent
