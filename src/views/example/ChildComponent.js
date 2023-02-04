@@ -33,7 +33,7 @@ class ChildComponent extends React.Component{
                     <div className="job-list">
                         {
                             arrJobs.map((item, index)=>{
-                                if(item.salary >= 500){
+                                if(item.salary >= 300){
                                     return(
                                         <div key={item.id}>
                                             {item.title}-{item.salary}$

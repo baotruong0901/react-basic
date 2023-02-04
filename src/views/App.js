@@ -5,31 +5,48 @@ import ListToDo from './todos/ListToDo.js'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import Nav from './Navigation/Nav';
+import Home from './example/Home';
+import { BrowserRouter, Switch,Route,Link } from 'react-router-dom';
+
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          SIMPLE TODOLIST
-        </p>
-        {/* <MyComponent></MyComponent> */}
-        <ListToDo />
-      </header>
+    <BrowserRouter>
+      <div className="App">
+        <header className="App-header">
+          <Nav/>
+          <img src={logo} className="App-logo" alt="logo" />
+          
 
-      <ToastContainer
-          position="top-right"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="colored"
-          />
-    </div>
+          
+          
+          <Switch>
+            <Route path="/" exact>
+              <Home/>
+            </Route>
+            <Route path="/todo">
+              <ListToDo />
+            </Route>
+            <Route path="/about">
+              <MyComponent/>
+            </Route>
+          </Switch>
+        </header>
+
+        <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="colored"
+            />
+      </div>
+    </BrowserRouter>
   );
 }
 

@@ -84,45 +84,50 @@ class ListToDo extends React.Component{
 
         let isEmtyObj=Object.keys(editToDo).length===0 
         return(
+            <>
+                <p>
+                    SIMPLE TODOLIST
+                </p>
+                <div className="list-todo-container">
+                        <AddToDo
+                            addNewToDo={this.addNewToDo}
+                        />
+                        <div className="list-todo-content">
 
-            <div className="list-todo-container">
-                <AddToDo
-                    addNewToDo={this.addNewToDo}
-                />
-                <div className="list-todo-content">
-
-                    {listTodos && listTodos.length>0 &&
-                        listTodos.map((item,index)=>{
-                            return(
-                                <div className="todo-child" key={item.id}>
-                                    {isEmtyObj === true ?
-                                        <span>{index +1} - {item.title}</span>
-                                    :
-                                        <>
-                                        {editToDo.id === item.id ?
-                                            <span>
-                                                {index+1} - <input value={editToDo.title} 
-                                                onChange={(e)=>this.handleOnChangeEditToDo(e)} />
-                                            </span>
-                                        :
-                                            <span>{index +1} - {item.title}</span>
-                                        }
-                                        </>
-                                    }
-                                    <div>
-                                        <button className="edit" onClick={()=>this.handleEdit(item)}>
-                                            {isEmtyObj===false && editToDo.id === item.id ? 'Save' : 'Edit'}
-                                        </button>
-                                        <button className="delete" onClick={()=>this.handleDelete(item)}>Delete</button>
-                                    </div>
-                                </div>
-                            )
-                        })
-                    }
-                    
-                    
+                            {listTodos && listTodos.length>0 &&
+                                listTodos.map((item,index)=>{
+                                    return(
+                                        <div className="todo-child" key={item.id}>
+                                            {isEmtyObj === true ?
+                                                <span>{index +1} - {item.title}</span>
+                                            :
+                                                <>
+                                                {editToDo.id === item.id ?
+                                                    <span>
+                                                        {index+1} - <input value={editToDo.title} 
+                                                        onChange={(e)=>this.handleOnChangeEditToDo(e)} />
+                                                    </span>
+                                                :
+                                                    <span>{index +1} - {item.title}</span>
+                                                }
+                                                </>
+                                            }
+                                            <div>
+                                                <button className="edit" onClick={()=>this.handleEdit(item)}>
+                                                    {isEmtyObj===false && editToDo.id === item.id ? 'Save' : 'Edit'}
+                                                </button>
+                                                <button className="delete" onClick={()=>this.handleDelete(item)}>Delete</button>
+                                            </div>
+                                        </div>
+                                    )
+                                })
+                            }
+                            
+                            
+                        </div>
                 </div>
-            </div>
+            </>
+            
         )
     }
 }
