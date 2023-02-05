@@ -2,18 +2,26 @@
 const initState={
     users:[
         {id:1, name:'bao'},
-        {id:2, name:'vy'}
-    ]
+        {id:2, name:'vy'},
+        {id:3, name:'ha'}
+    ],
+    pop:[]
 }
 const rootReducer = (state=initState, action)=>{
    switch (action.type) {
-    case 'IMCREMET':
-        
+    case 'DELETE_USER':
+        let users= state.users
+        users=users.filter(item=> item.id !== action.payload.id)
         return{
             ...state,
-            name:'ha'
+            users
         };
-   
+    case 'CREATE_USER':
+        let id = Math.floor(Math.random()*10001)
+        let user= {id:id, name:`random - ${id}`}
+        return{
+            ...state,users:[...state.users,user]
+        }
     default:
         return state;
    }
